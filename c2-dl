@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -e -u
+set -o pipefail
+export LC_ALL=C
+
+usage()
+{
+    printf 'Usage:\n  %s URL\n  %s TITLE\n' "$prog" "$prog" >&2
+    exit 1
+}
+
+prog="${0##*/}"
+[ $# -eq 1 ] || usage
+arg="$1"
+if [[ $arg =~ ^https?://wiki[.]c2[.]com/[?]([A-Za-z0-9_]+) ]]
+then
+    title=${BASH_REMATCH[1]}
+elif [[ $arg =~ ^https?://wiki[.]c2[.]com($|/) ]]
+then
+    title=WelcomeVisitors
+elif [[ $arg =~ ^[A-Za-z0-9_]+$ ]]
+then
+    title=$arg
+else
+    usage
+fi
+url="http://c2.com/wiki/remodel/pages/$title"
+curl --silent --fail --show-error "$url" \
+| jq -r '.["text"]' \
+| tr -d '\r'
+
+# vim:ts=4 sts=4 sw=4 et
