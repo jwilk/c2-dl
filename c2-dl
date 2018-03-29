@@ -29,7 +29,7 @@ else
     usage
 fi
 url="http://c2.com/wiki/remodel/pages/$title"
-curl --silent --fail --show-error "$url" \
+curl --silent --fail --show-error "$url" --user-agent 'c2-dl (https://github.com/jwilk/c2-dl)' \
 | jq -r '.["text"]' \
 | tr -d '\r'
 
