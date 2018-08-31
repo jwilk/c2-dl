@@ -3,6 +3,8 @@ sudo: false
 language: generic
 install:
 - python -m pip install --user pygments restructuredtext-lint
+before_script:
+- curl --version
 script:
 - ./c2-dl 'https://wiki.c2.com/?WorksForMe'
 - shellcheck c2-dl
