@@ -19,6 +19,9 @@ arg="$1"
 if [[ $arg =~ ^https?://wiki[.]c2[.]com/[?]([A-Za-z0-9_]+)$ ]]
 then
     title=${BASH_REMATCH[1]}
+elif [[ $arg =~ ^https?://c2.com/cgi-bin/wiki[?]([A-Za-z0-9_]+)$ ]]
+then
+    title=${BASH_REMATCH[1]}
 elif [[ $arg =~ ^https?://wiki[.]c2[.]com($|/) ]]
 then
     title=WelcomeVisitors
