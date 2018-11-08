@@ -16,7 +16,7 @@ usage()
 prog="${0##*/}"
 [ $# -eq 1 ] || usage
 arg="$1"
-if [[ $arg =~ ^https?://wiki[.]c2[.]com/[?]([A-Za-z0-9_]+) ]]
+if [[ $arg =~ ^https?://wiki[.]c2[.]com/[?]([A-Za-z0-9_]+)$ ]]
 then
     title=${BASH_REMATCH[1]}
 elif [[ $arg =~ ^https?://wiki[.]c2[.]com($|/) ]]
