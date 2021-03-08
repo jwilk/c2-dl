@@ -13,9 +13,9 @@ Overview
    $ c2-dl 'https://wiki.c2.com/?WorksForMe'
    A certain type of response by a developer to a known defect.  E.g.,
 
-   	 :	''Tester:'' The Gantt chart doesn't resize on my machine.
+            :      ''Tester:'' The Gantt chart doesn't resize on my machine.
 
-   	 :	''Developer:''  It works for me.
+            :      ''Developer:''  It works for me.
 
    Also known as ItWorksOnMyMachine.  In IndustrialDesign, this is known as EgoDesignType.
 
