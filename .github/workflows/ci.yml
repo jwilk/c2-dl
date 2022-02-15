@@ -12,13 +12,16 @@ jobs:
     runs-on: ${{matrix.os}}
     steps:
     - uses: actions/checkout@v2
-    - run: |
+    - name: check curl version
+      run: |
         curl --version
-    - run: |
+    - name: smoke test
+      run: |
         ./c2-dl 'https://wiki.c2.com/?WorksForMe'
       env:
         OPENSSL_CONF: /dev/null
-    - run: |
+    - name: run shellcheck
+      run: |
         shellcheck c2-dl
     - name: check README syntax
       run: |
