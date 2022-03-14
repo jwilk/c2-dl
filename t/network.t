@@ -18,40 +18,21 @@ i=0
 t()
 {
     i=$((i + 1))
-    out=$("$prog" "$@")
+    url="$1"
+    xout="$2"
+    out=$("$prog" "$url")
     if [[ "$out" = "$xout"* ]]
     then
-        echo "ok $i $*"
+        echo "ok $i $url"
     else
         # shellcheck disable=SC2001
         sed -e 's/^/# /' <<< "$out"
-        echo "not ok $i $*"
+        echo "not ok $i $url"
     fi
 }
 
-echo 1..21
-xout='A certain type of response by a developer to a known defect.'
-t 'http://c2.com/cgi-bin/wiki?WorksForMe'
-t 'https://c2.com/cgi-bin/wiki?WorksForMe'
-t 'http://c2.com/cgi/wiki?WorksForMe'
-t 'https://c2.com/cgi/wiki?WorksForMe'
-t 'http://www.c2.com/cgi-bin/wiki?WorksForMe'
-t 'https://www.c2.com/cgi-bin/wiki?WorksForMe'
-t 'http://www.c2.com/cgi/wiki?WorksForMe'
-t 'https://www.c2.com/cgi/wiki?WorksForMe'
-t 'http://wiki.c2.com/?WorksForMe'
-t 'https://wiki.c2.com/?WorksForMe'
-t 'WorksForMe'
-xout='Welcome to the WikiWikiWeb, also known as "Wiki".'
-t 'http://c2.com/cgi-bin/wiki'
-t 'https://c2.com/cgi-bin/wiki'
-t 'http://c2.com/cgi/wiki'
-t 'https://c2.com/cgi/wiki'
-t 'http://www.c2.com/cgi-bin/wiki'
-t 'https://www.c2.com/cgi-bin/wiki'
-t 'http://www.c2.com/cgi/wiki'
-t 'https://www.c2.com/cgi/wiki'
-t 'http://wiki.c2.com/'
-t 'https://wiki.c2.com/'
+echo 1..2
+t 'https://wiki.c2.com/?WorksForMe' 'A certain type of response by a developer to a known defect.'
+t 'https://wiki.c2.com/' 'Welcome to the WikiWikiWeb, also known as "Wiki".'
 
 # vim:ts=4 sts=4 sw=4 et ft=sh
