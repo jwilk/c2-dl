@@ -9,11 +9,11 @@ export LC_ALL=C
 
 usage()
 {
+    local prog="${0##*/}"
     printf 'Usage:\n  %s URL\n  %s TITLE\n' "$prog" "$prog" >&2
     exit 1
 }
 
-prog="${0##*/}"
 [ $# -eq 1 ] || usage
 arg="$1"
 if [[ $arg =~ ^https?://wiki[.]c2[.]com/[?]([A-Za-z0-9_]+)$ ]]
