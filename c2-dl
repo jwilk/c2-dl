@@ -29,10 +29,10 @@ fi
 if [[ $arg =~ ^https?://wiki[.]c2[.]com/[?]([A-Za-z0-9_]+)$ ]]
 then
     title=${BASH_REMATCH[1]}
-elif [[ $arg =~ ^https?://c2.com/cgi-bin/wiki[?]([A-Za-z0-9_]+)$ ]]
+elif [[ $arg =~ ^https?://(www[.])?c2[.]com/cgi(-bin)?/wiki[?]([A-Za-z0-9_]+)$ ]]
 then
-    title=${BASH_REMATCH[1]}
-elif [[ $arg =~ ^https?://wiki[.]c2[.]com($|/) ]]
+    title=${BASH_REMATCH[3]}
+elif [[ $arg =~ ^https?://wiki[.]c2[.]com($|/) ]] || [[ $arg =~ ^https?://(www[.])?c2[.]com/cgi(-bin)?/wiki$ ]]
 then
     title=WelcomeVisitors
 elif [[ $arg =~ ^[A-Za-z0-9_]+$ ]]
