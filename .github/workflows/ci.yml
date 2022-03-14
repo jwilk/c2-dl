@@ -15,14 +15,14 @@ jobs:
     - name: check curl version
       run: |
         curl --version
-    - name: smoke test
-      run: |
-        ./c2-dl 'https://wiki.c2.com/?WorksForMe'
+    - name: run tests
+      run:
+        C2_DL_NETWORK_TESTING=1 prove -v
       env:
         OPENSSL_CONF: /dev/null
     - name: run shellcheck
       run: |
-        shellcheck c2-dl
+        shellcheck c2-dl t/*.t
     - name: check README syntax
       run: |
         pip install restructuredtext-lint pygments
