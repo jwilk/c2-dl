@@ -10,12 +10,22 @@ export LC_ALL=C
 usage()
 {
     local prog="${0##*/}"
-    printf 'Usage:\n  %s URL\n  %s TITLE\n' "$prog" "$prog" >&2
+    printf 'Usage:\n  %s URL\n  %s TITLE\n' "$prog" "$prog"
+}
+
+bad_usage()
+{
+    usage >&2
     exit 1
 }
 
-[ $# -eq 1 ] || usage
+[ $# -eq 1 ] || bad_usage
 arg="$1"
+if [[ $arg = '-h' ]] || [[ $arg = '--help' ]]
+then
+    usage
+    exit 0
+fi
 if [[ $arg =~ ^https?://wiki[.]c2[.]com/[?]([A-Za-z0-9_]+)$ ]]
 then
     title=${BASH_REMATCH[1]}
@@ -29,7 +39,7 @@ elif [[ $arg =~ ^[A-Za-z0-9_]+$ ]]
 then
     title=$arg
 else
-    usage
+    bad_usage
 fi
 url="https://c2.com/wiki/remodel/pages/$title"
 tmpca=$(mktemp -t c2-dl.XXXXXX)

@@ -5,7 +5,7 @@ Overview
 
 .. code:: console
 
-   $ c2-dl
+   $ c2-dl --help
    Usage:
      c2-dl URL
      c2-dl TITLE
