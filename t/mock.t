@@ -27,11 +27,11 @@ export http_proxy='http://localhost:9'
 export https_proxy='http://localhost:9'
 
 tmpdir=$(mktemp -d -t c2-dl.test.XXXXXX)
-cat <<'EOF' > "$tmpdir/curl"
+cat <<'EOF' > "$tmpdir/wget"
 #!/bin/sh
 exec jq -n '{text: $text}' --arg text "$1"
 EOF
-chmod u+x "$tmpdir/curl"
+chmod u+x "$tmpdir/wget"
 PATH="$tmpdir:${PATH:?}"
 echo 1..21
 pg='WorksForMe'

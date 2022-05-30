@@ -28,7 +28,7 @@ Prerequisites
 =============
 
 * bash
-* curl
+* wget
 * jq_
 
 .. _jq:
