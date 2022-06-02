@@ -14,10 +14,10 @@ fi
 pdir="${0%/*}/.."
 prog="$pdir/c2-dl"
 
-i=0
+declare -i i=0
 t()
 {
-    i=$((i + 1))
+    i+=1
     url="$1"
     xout="$2"
     out=$("$prog" "$url")

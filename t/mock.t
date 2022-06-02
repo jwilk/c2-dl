@@ -8,10 +8,10 @@ set -e -u
 pdir="${0%/*}/.."
 prog="$pdir/c2-dl"
 
-i=0
+declare -i i=0
 t()
 {
-    i=$((i + 1))
+    i+=1
     out=$("$prog" "$@")
     if [[ "$out" = "https://c2.com/wiki/remodel/pages/$pg" ]]
     then
