@@ -32,6 +32,6 @@ Prerequisites
 * jq_
 
 .. _jq:
-   https://github.com/stedolan/jq
+   https://github.com/jqlang/jq
 
 .. vim:ft=rst ts=3 sts=3 sw=3 et
